@@ -1,6 +1,6 @@
 import { users } from "@prisma/client";
 
-export type ISignInData = {
+export type ISignUpData = {
     email: string,
     passwod: string,
     confirmedPasswod: string
