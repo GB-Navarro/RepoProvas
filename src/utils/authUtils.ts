@@ -44,12 +44,24 @@ function generateToken(id: number): string {
     return token;
 }
 
+function filterToken(token: string): string {
+
+    let filteredToken: string = "";
+
+    for (let index = 7; index < token.length; index++) {
+        filteredToken += token[index];
+    }
+
+    return filteredToken
+}
+
 const authUtils = {
 
     comparePasswordsOrFail,
     encryptPassword,
     generateRegistrationData,
-    generateToken
+    generateToken,
+    filterToken
 }
 
 export default authUtils
