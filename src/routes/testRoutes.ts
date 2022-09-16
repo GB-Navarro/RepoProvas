@@ -7,6 +7,6 @@ import testSchemas from "../schemas/testSchemas.js";
 
 const testRouter = Router();
 
-testRouter.post("/tests/insert", genericMiddlewares.validateSchema(testSchemas.insert), testController.insert);
+testRouter.post("/tests/insert", genericMiddlewares.validateToken ,genericMiddlewares.validateSchema(testSchemas.insert), testController.insert);
 
 export default testRouter;
