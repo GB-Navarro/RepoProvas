@@ -1,4 +1,4 @@
-import { IUserData, UserId } from "../interfaces/AuthInterfaces.js";
+import { IUserData, UserId } from "../interfaces/authInterfaces.js";
 
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
