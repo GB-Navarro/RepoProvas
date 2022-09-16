@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { ObjectSchema } from "joi";
 
-export default function validateSchema(schema: ObjectSchema) {
+function validateSchema(schema: ObjectSchema) {
     return (req: Request, res: Response, next: NextFunction) => {
 
         const validation = schema.validate(req.body);
@@ -13,3 +13,10 @@ export default function validateSchema(schema: ObjectSchema) {
         next();
     }
 }
+
+const genericMiddlewares = {
+
+    validateSchema
+}
+
+export default genericMiddlewares;
