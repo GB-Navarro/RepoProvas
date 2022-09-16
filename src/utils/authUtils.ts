@@ -1,6 +1,10 @@
-import { IUserData } from "../interfaces/AuthInterfaces.js";
+import { IUserData, UserId } from "../interfaces/AuthInterfaces.js";
 
 import bcrypt from "bcrypt";
+import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
+
+dotenv.config();
 
 function comparePasswordsOrFail(firstPassword: string, secondPassword: string): void {
 
@@ -27,11 +31,25 @@ function generateRegistrationData(email: string, encryptedPassword: string): IUs
     return registrationData;
 }
 
+function generateToken(id: number): string {
+
+    const userInfo: UserId = {
+        id: id
+    }
+
+    const secretKey: string = process.env.JWT_SECRET;
+    const configs: { expiresIn: number } = { expiresIn: 60 * 60 } /* O token irá expirar em 60 minutos*/
+    const token: string = jwt.sign(userInfo, secretKey, configs);
+
+    return token;
+}
+
 const authUtils = {
 
     comparePasswordsOrFail,
     encryptPassword,
-    generateRegistrationData
+    generateRegistrationData,
+    generateToken
 }
 
 export default authUtils
