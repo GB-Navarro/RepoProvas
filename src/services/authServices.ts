@@ -4,6 +4,8 @@ import { ISignUpData, IUserData } from "../interfaces/AuthInterfaces.js";
 import authRepository from "../repositories/authRepository.js";
 import authUtils from "../utils/authUtils.js";
 
+import bcrypt from "bcrypt";
+
 async function checkEmailUniquenessOrFail(email: string) {
 
     const result: users = await authRepository.searchEmail(email);
@@ -37,6 +39,19 @@ async function getUserDataOrFail(email: string) {
     }
 
     return result
+}
+
+async function comparePasswordsOrFail(data: IUserData) {
+
+    const { email, password } = data;
+
+    const realPassword: string = await authRepository.getPasswordByEmail(email);
+
+    const isEqual: boolean = bcrypt.compareSync(password.toString(), realPassword.toString());
+
+    if (!(isEqual)) {
+        throw { code: "error_wrongPassword", message: "Wrong password!" };
+    }
 }
 
 const authServices = {
