@@ -7,3 +7,5 @@ export type ISignUpData = {
 }
 
 export type IUserData = Omit<users, "id">
+
+export type UserPassword = Omit<users,"id" | "email">
