@@ -16,6 +16,8 @@ async function signIn(req: Request, res: Response){
 
     const data: IUserData = req.body;
 
+    await authServices.login(data);
+    
     res.status(200).send("O token vai ser retornado!");
 }
 
