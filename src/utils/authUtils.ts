@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt";
 
 function comparePasswordsOrFail(firstPassword: string, secondPassword: string): void {
 
@@ -6,9 +7,17 @@ function comparePasswordsOrFail(firstPassword: string, secondPassword: string): 
     }
 }
 
+function encryptPassword(password: string): string {
+
+    const encryptedPassword: string = bcrypt.hashSync(password, 10);
+
+    return encryptedPassword;
+}
+
 const authUtils = {
 
-    comparePasswordsOrFail
+    comparePasswordsOrFail,
+    encryptPassword
 }
 
 export default authUtils
