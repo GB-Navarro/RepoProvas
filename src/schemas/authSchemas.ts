@@ -1,4 +1,4 @@
-import { ISignUpData } from "../interfaces/AuthInterfaces.js";
+import { ISignUpData, IUserData } from "../interfaces/AuthInterfaces.js";
 
 import Joi from "joi";
 
@@ -9,9 +9,16 @@ const signUp = Joi.object<ISignUpData>({
     confirmedPassword: Joi.string().min(10).required()
 })
 
+const signIn = Joi.object<IUserData>({
+
+    email: Joi.string().email({ tlds: { allow: false } }).required(),
+    password: Joi.string().min(10).required()
+})
+
 const authSchemas = {
 
-    signUp
+    signUp,
+    signIn
 }
 
 export default authSchemas
