@@ -1,6 +1,6 @@
 import { client } from "../dbStrategy/postgres.js";
 import { users } from "@prisma/client";
-import { IUserData } from "../interfaces/AuthInterfaces.js";
+import { IUserData, UserPassword } from "../interfaces/AuthInterfaces.js";
  
 async function searchEmail(email: string) {
 
@@ -20,10 +20,25 @@ async function insertUser(data: IUserData) {
     })
 }
 
+async function getPasswordByEmail(email: string) {
+
+    const result: UserPassword = await client.users.findUnique({
+        where: {
+            email: email
+        },
+        select: {
+            password: true
+        }
+    })
+
+    return result.password;
+}
+
 const authRepository = {
 
     searchEmail,
-    insertUser
+    insertUser,
+    getPasswordByEmail
 }
 
 export default authRepository;
