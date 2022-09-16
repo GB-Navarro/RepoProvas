@@ -55,13 +55,34 @@ function filterToken(token: string): string {
     return filteredToken
 }
 
+function checkTokenValidity(token: string): string {
+
+    const secretKey: string = process.env.JWT_SECRET
+
+    try {
+
+        const { id, email }: any = jwt.verify(token, secretKey)
+
+        const data: any = {
+            id: id,
+            email: email
+        }
+
+        return data;
+    } catch (error) {
+
+        throw { code: "error_invalidToken", message: "Invalid token!" };
+    }
+}
+
 const authUtils = {
 
     comparePasswordsOrFail,
     encryptPassword,
     generateRegistrationData,
     generateToken,
-    filterToken
+    filterToken,
+    checkTokenValidity
 }
 
 export default authUtils
