@@ -16,3 +16,5 @@ const testUtils = {
 
     generateInsertData
 }
+
+export default testUtils;
