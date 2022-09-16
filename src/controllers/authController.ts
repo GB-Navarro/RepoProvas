@@ -11,3 +11,10 @@ async function signUp(req: Request, res: Response) {
 
     res.status(200).send("The user was created!");
 }
+
+const authController = {
+
+    signUp
+}
+
+export default authController;
