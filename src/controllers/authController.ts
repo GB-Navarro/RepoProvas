@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ISignUpData, IUserData } from "../interfaces/AuthInterfaces.js";
+import { ISignUpData, IUserData } from "../interfaces/authInterfaces.js";
 
 import authServices from "../services/authServices.js";
 

@@ -1,4 +1,4 @@
-import { IUserData, UserId } from "../interfaces/AuthInterfaces.js";
+import { IUserData, UserId } from "../interfaces/authInterfaces.js";
 
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
@@ -44,12 +44,45 @@ function generateToken(id: number): string {
     return token;
 }
 
+function filterToken(token: string): string {
+
+    let filteredToken: string = "";
+
+    for (let index = 7; index < token.length; index++) {
+        filteredToken += token[index];
+    }
+
+    return filteredToken
+}
+
+function checkTokenValidity(token: string): string {
+
+    const secretKey: string = process.env.JWT_SECRET
+
+    try {
+
+        const { id, email }: any = jwt.verify(token, secretKey)
+
+        const data: any = {
+            id: id,
+            email: email
+        }
+
+        return data;
+    } catch (error) {
+
+        throw { code: "error_invalidToken", message: "Invalid token!" };
+    }
+}
+
 const authUtils = {
 
     comparePasswordsOrFail,
     encryptPassword,
     generateRegistrationData,
-    generateToken
+    generateToken,
+    filterToken,
+    checkTokenValidity
 }
 
 export default authUtils

@@ -1,6 +1,6 @@
 import { client } from "../dbStrategy/postgres.js";
 import { users } from "@prisma/client";
-import { IUserData, UserPassword } from "../interfaces/AuthInterfaces.js";
+import { IUserData, UserPassword } from "../interfaces/authInterfaces.js";
  
 async function searchEmail(email: string) {
 
