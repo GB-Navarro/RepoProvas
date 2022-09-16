@@ -54,9 +54,23 @@ async function comparePasswordsOrFail(data: IUserData) {
     }
 }
 
+async function login(data: IUserData) {
+
+    const { email } = data;
+
+    const { id } = await getUserDataOrFail(email);
+
+    await comparePasswordsOrFail(data);
+
+    const token: string = authUtils.generateToken(id);
+
+    return token;
+}
+
 const authServices = {
 
-    createUser
+    createUser,
+    login
 }
 
 export default authServices;
