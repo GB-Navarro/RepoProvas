@@ -1,3 +1,9 @@
 import { tests } from "@prisma/client";
 
-export type ITestData = Omit<tests, "id">
+export type ITestData = {
+    name: string,
+    pdfUrl: string,
+    category: string,
+    discipline: string,
+    teacher: string
+}
