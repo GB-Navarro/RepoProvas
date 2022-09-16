@@ -1,3 +1,5 @@
+import { IUserData } from "../interfaces/AuthInterfaces.js";
+
 import bcrypt from "bcrypt";
 
 function comparePasswordsOrFail(firstPassword: string, secondPassword: string): void {
@@ -14,10 +16,22 @@ function encryptPassword(password: string): string {
     return encryptedPassword;
 }
 
+function generateRegistrationData(email: string, encryptedPassword: string): IUserData {
+
+    const registrationData: IUserData = {
+
+        email: email,
+        password: encryptedPassword
+    }
+
+    return registrationData;
+}
+
 const authUtils = {
 
     comparePasswordsOrFail,
-    encryptPassword
+    encryptPassword,
+    generateRegistrationData
 }
 
 export default authUtils
