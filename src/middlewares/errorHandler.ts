@@ -13,5 +13,6 @@ export default async function errorHandler(error: any, req: Request, res: Respon
     }
 
     console.log(error.message);
+    
     return res.sendStatus(500);
 }

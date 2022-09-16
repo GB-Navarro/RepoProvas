@@ -16,9 +16,9 @@ async function signIn(req: Request, res: Response){
 
     const data: IUserData = req.body;
 
-    await authServices.login(data);
+    const token:string = await authServices.login(data);
     
-    res.status(200).send("O token vai ser retornado!");
+    res.status(200).send(token);
 }
 
 const authController = {
