@@ -1,3 +1,9 @@
 import { users } from "@prisma/client";
 
-type IUserData = Omit<users,"id">
+export type ISignInData = {
+    email: string,
+    passwod: string,
+    confirmedPasswod: string
+}
+
+export type IUserData = Omit<users, "id">
