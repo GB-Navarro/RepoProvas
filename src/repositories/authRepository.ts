@@ -1,5 +1,6 @@
 import { client } from "../dbStrategy/postgres.js";
 import { users } from "@prisma/client";
+import { IUserData } from "../interfaces/AuthInterfaces.js";
  
 async function searchEmail(email: string) {
 
@@ -12,9 +13,17 @@ async function searchEmail(email: string) {
     return result;
 }
 
+async function insertUser(data: IUserData) {
+
+    await client.users.create({
+        data: data
+    })
+}
+
 const authRepository = {
 
-    searchEmail
+    searchEmail,
+    insertUser
 }
 
 export default authRepository;
