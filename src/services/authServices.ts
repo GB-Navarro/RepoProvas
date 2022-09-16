@@ -28,6 +28,17 @@ async function createUser(data: ISignUpData) {
     await authRepository.insertUser(registrationData);
 }
 
+async function getUserDataOrFail(email: string) {
+
+    const result: users = await authRepository.searchEmail(email);
+
+    if (result === null) {
+        throw { code: "error_thisEmailIsNotRegistered", message: "This e-mail is not registered!" };
+    }
+
+    return result
+}
+
 const authServices = {
 
     createUser
