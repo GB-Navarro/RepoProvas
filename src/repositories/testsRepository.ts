@@ -9,7 +9,7 @@ async function insert(data: Omit<Tests, "id">) {
     })
 }
 
-async function getManyById() {
+async function getManyByTermAndDiscipline() {
     const result: IUnformatedTestObtainedByTermAndDiscipline[] = await client.tests.findMany({
         orderBy: [{
             teacherDiscipline: {
@@ -67,7 +67,7 @@ async function getManyById() {
 const testsRepository = {
 
     insert,
-    getManyById
+    getManyByTermAndDiscipline
 }
 
 export default testsRepository;
