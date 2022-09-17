@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ITestData } from "../interfaces/testInterfaces.js";
+import { ITestData, IUnformatedTestObtainedByTermAndDiscipline } from "../interfaces/testInterfaces.js";
 import testServices from "../services/testServices.js";
 
 async function insert(req: Request, res: Response) {
@@ -13,7 +13,7 @@ async function insert(req: Request, res: Response) {
 
 async function searchByDiscipline(req: Request, res: Response) {
 
-    const data = await testServices.getManyById();
+    const data: IUnformatedTestObtainedByTermAndDiscipline[]  = await testServices.getManyById();
 
     res.status(200).send(data);
 }
