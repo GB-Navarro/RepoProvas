@@ -17,10 +17,17 @@ async function searchByDiscipline(req: Request, res: Response) {
 
     res.status(200).send(data);
 }
+
+async function searchByTeacher(req: Request, res: Response) {
+    
+    res.status(200).send("Os dados serão enviados por aqui");
+}
+
 const testController = {
 
     insert,
-    searchByDiscipline
+    searchByDiscipline,
+    searchByTeacher
 }
 
 export default testController;
