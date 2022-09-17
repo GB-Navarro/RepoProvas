@@ -1,7 +1,7 @@
 import { ITestData, IUnformatedTestObtainedByTermAndDiscipline, IUnformatedTestObtainedByTeacherName } from "../interfaces/testInterfaces.js";
 import { tests as Tests } from "@prisma/client";
 
-import testsRepository from "../repositories/testsRepository.js";
+import testsRepository from "../repositories/testRepository.js";
 import teachersRepository from "../repositories/teachersRepository.js";
 import categoriesRepository from "../repositories/categoriesRepository.js";
 import disciplinesRepository from "../repositories/disciplinesRepository.js";
