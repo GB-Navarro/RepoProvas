@@ -23,9 +23,17 @@ async function insert(data: ITestData) {
     await testsRepository.insert(insertData);
 }
 
+async function getManyById(disciplineId: number){
+
+    const data = await testsRepository.getManyById(disciplineId);
+
+    return data;
+}
+
 const testServices = {
 
-    insert
+    insert,
+    getManyById
 }
 
 export default testServices;
