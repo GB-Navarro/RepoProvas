@@ -23,9 +23,9 @@ async function insert(data: ITestData) {
     await testsRepository.insert(insertData);
 }
 
-async function getManyById() {
+async function getManyByTermAndDiscipline() {
 
-    const data: IUnformatedTestObtainedByTermAndDiscipline[] = await testsRepository.getManyById();
+    const data: IUnformatedTestObtainedByTermAndDiscipline[] = await testsRepository.getManyByTermAndDiscipline();
 
     return data;
 }
@@ -33,7 +33,7 @@ async function getManyById() {
 const testServices = {
 
     insert,
-    getManyById
+    getManyByTermAndDiscipline
 }
 
 export default testServices;
