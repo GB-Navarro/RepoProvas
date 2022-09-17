@@ -8,5 +8,5 @@ import testSchemas from "../schemas/testSchemas.js";
 const testRouter = Router();
 
 testRouter.post("/tests/insert", genericMiddlewares.validateToken ,genericMiddlewares.validateSchema(testSchemas.insert), testController.insert);
-testRouter.get("/tests/searchByDiscipline/:id", genericMiddlewares.validateToken, testController.searchByDiscipline);
+testRouter.get("/tests/searchByDiscipline/:name", genericMiddlewares.validateToken, testController.searchByDiscipline);
 export default testRouter;
