@@ -23,7 +23,9 @@ async function insert(data: ITestData) {
     await testsRepository.insert(insertData);
 }
 
-async function getManyById(disciplineId: number){
+async function getManyById(disciplineName: string) {
+
+    const { id: disciplineId }: { id: number } = await disciplinesRepository.getIdByName(disciplineName);
 
     const data = await testsRepository.getManyById(disciplineId);
 
