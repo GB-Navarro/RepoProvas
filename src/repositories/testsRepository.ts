@@ -8,13 +8,6 @@ async function insert(data: Omit<Tests, "id">) {
     })
 }
 
-/*
-    1°Período
-        2°Disciplina
-            3°Tipo de prova (P1,P2,P3)
-                4°Nome da prova
-                    5°Link da prova
-*/
 async function getManyById(disciplineId: number) {
     const result = await client.tests.findMany({
         select:{
