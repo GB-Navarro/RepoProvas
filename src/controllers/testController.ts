@@ -12,10 +12,10 @@ async function insert(req: Request, res: Response) {
 }
 
 async function searchByDiscipline(req: Request, res: Response) {
-
-    const disciplineId = res.locals.data
     
-    const data = await testServices.getManyById(disciplineId);
+    const { id: disciplineId } = req.params;
+    
+    const data = await testServices.getManyById(parseInt(disciplineId));
 
     res.status(200).send(data);
 }

@@ -40,6 +40,8 @@ async function getManyById(disciplineId: number) {
             }
         }
     })
+
+    return result;
 }
 
 const testsRepository = {
