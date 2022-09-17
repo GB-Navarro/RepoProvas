@@ -1,6 +1,6 @@
 import { tests as Tests } from "@prisma/client";
 import { client } from "../dbStrategy/postgres.js";
-import { IUnformatedTestObtainedByTermAndDiscipline } from "../interfaces/testInterfaces.js";
+import { IUnformatedTestObtainedByTermAndDiscipline, IUnformatedTestObtainedByTeacherName } from "../interfaces/testInterfaces.js";
 
 async function insert(data: Omit<Tests, "id">) {
 
@@ -19,41 +19,41 @@ async function getManyByTermAndDiscipline() {
                     }
                 }
             }
-        },{
-            teacherDiscipline:{
-                disciplines:{
+        }, {
+            teacherDiscipline: {
+                disciplines: {
                     id: 'asc'
                 }
             }
-        },{
-            teacherDiscipline:{
-                teacher:{
+        }, {
+            teacherDiscipline: {
+                teacher: {
                     id: 'asc'
                 }
             }
         }],
-        select:{
-            teacherDiscipline:{
-                select:{
-                    disciplines:{
-                        select:{
-                            terms:{
-                                select:{
+        select: {
+            teacherDiscipline: {
+                select: {
+                    disciplines: {
+                        select: {
+                            terms: {
+                                select: {
                                     number: true
                                 }
                             },
                             name: true
                         }
                     },
-                    teacher:{
-                        select:{
+                    teacher: {
+                        select: {
                             name: true
                         }
                     }
                 }
             },
-            categories:{
-                select:{
+            categories: {
+                select: {
                     name: true
                 }
             },
@@ -64,37 +64,37 @@ async function getManyByTermAndDiscipline() {
     return result;
 }
 
-async function getManyByTeacherName(){
+async function getManyByTeacherName() {
 
-    const result = await client.tests.findMany({
-        orderBy:[{
-            teacherDiscipline:{
-                teacher:{
-                    id:'asc'
+    const result: IUnformatedTestObtainedByTeacherName[] = await client.tests.findMany({
+        orderBy: [{
+            teacherDiscipline: {
+                teacher: {
+                    id: 'asc'
                 }
             }
-        },{
-            categories:{
-                id:'asc'
+        }, {
+            categories: {
+                id: 'asc'
             }
         }],
-        select:{
-            teacherDiscipline:{
-                select:{
-                    teacher:{
-                        select:{
+        select: {
+            teacherDiscipline: {
+                select: {
+                    teacher: {
+                        select: {
                             name: true
                         }
                     },
-                    disciplines:{
-                        select:{
+                    disciplines: {
+                        select: {
                             name: true
                         }
                     }
                 }
             },
-            categories:{
-                select:{
+            categories: {
+                select: {
                     name: true
                 }
             },
