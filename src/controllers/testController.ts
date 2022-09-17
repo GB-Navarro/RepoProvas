@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { ITestData, IUnformatedTestObtainedByTeacherName, IUnformatedTestObtainedByTermAndDiscipline } from "../interfaces/testInterfaces.js";
 
-import testServices from "../services/testsServices.js";
+import testServices from "../services/testServices.js";
 
 async function insert(req: Request, res: Response) {
 
