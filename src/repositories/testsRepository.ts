@@ -10,7 +10,7 @@ async function insert(data: Omit<Tests, "id">) {
 }
 
 async function getManyById() {
-    const result: IUnformatedTestsObtainedByTermAndDiscipline[] = await client.tests.findMany({
+    const result = await client.tests.findMany({
         orderBy: [{
             teacherDiscipline: {
                 disciplines: {
@@ -32,36 +32,35 @@ async function getManyById() {
                 }
             }
         }],
-        select: {
-            name: true,
-            pdfUrl: true,
-            categories: {
-                select: {
-                    name: true
-                }
-            },
-            teacherDiscipline: {
-                select: {
-                    teacher: {
-                        select: {
+        select:{
+            teacherDiscipline:{
+                select:{
+                    disciplines:{
+                        select:{
+                            terms:{
+                                select:{
+                                    number: true
+                                }
+                            },
                             name: true
                         }
                     },
-                    disciplines: {
-                        select: {
-                            name: true,
-                            terms: {
-                                select: {
-                                    number: true
-                                }
-                            }
+                    teacher:{
+                        select:{
+                            name: true
                         }
                     }
                 }
-            }
+            },
+            categories:{
+                select:{
+                    name: true
+                }
+            },
+            name: true,
+            pdfUrl: true,
         }
     })
-
     return result;
 }
 
