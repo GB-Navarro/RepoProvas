@@ -1,6 +1,6 @@
 import { tests as Tests } from "@prisma/client";
 import { client } from "../dbStrategy/postgres.js";
-import { IUnformatedTestsObtainedByTermAndDiscipline } from "../interfaces/testInterfaces.js";
+import { IUnformatedTestObtainedByTermAndDiscipline } from "../interfaces/testInterfaces.js";
 
 async function insert(data: Omit<Tests, "id">) {
 
@@ -10,7 +10,7 @@ async function insert(data: Omit<Tests, "id">) {
 }
 
 async function getManyById() {
-    const result = await client.tests.findMany({
+    const result: IUnformatedTestObtainedByTermAndDiscipline[] = await client.tests.findMany({
         orderBy: [{
             teacherDiscipline: {
                 disciplines: {
