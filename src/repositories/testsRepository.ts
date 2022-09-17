@@ -108,7 +108,8 @@ async function getManyByTeacherName(){
 const testsRepository = {
 
     insert,
-    getManyByTermAndDiscipline
+    getManyByTermAndDiscipline,
+    getManyByTeacherName
 }
 
 export default testsRepository;

@@ -30,10 +30,18 @@ async function getManyByTermAndDiscipline() {
     return data;
 }
 
+async function getManyByTeacherName() {
+
+    const data = await testsRepository.getManyByTeacherName();
+
+    return data;
+}  
+
 const testServices = {
 
     insert,
-    getManyByTermAndDiscipline
+    getManyByTermAndDiscipline,
+    getManyByTeacherName
 }
 
 export default testServices;
