@@ -13,7 +13,7 @@ async function insert(req: Request, res: Response) {
 
 async function searchByDiscipline(req: Request, res: Response) {
 
-    const data: IUnformatedTestObtainedByTermAndDiscipline[]  = await testServices.getManyById();
+    const data: IUnformatedTestObtainedByTermAndDiscipline[]  = await testServices.getManyByTermAndDiscipline();
 
     res.status(200).send(data);
 }
