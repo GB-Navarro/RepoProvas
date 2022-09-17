@@ -64,6 +64,36 @@ async function getManyByTermAndDiscipline() {
     return result;
 }
 
+async function getManyByTeacherName(){
+
+    const result = await client.tests.findMany({
+        select:{
+            teacherDiscipline:{
+                select:{
+                    teacher:{
+                        select:{
+                            name: true
+                        }
+                    },
+                    disciplines:{
+                        select:{
+                            name: true
+                        }
+                    }
+                }
+            },
+            categories:{
+                select:{
+                    name: true
+                }
+            },
+            name: true
+        }
+    })
+
+    return result
+}
+
 const testsRepository = {
 
     insert,
