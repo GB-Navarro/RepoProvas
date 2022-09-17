@@ -67,6 +67,17 @@ async function getManyByTermAndDiscipline() {
 async function getManyByTeacherName(){
 
     const result = await client.tests.findMany({
+        orderBy:[{
+            teacherDiscipline:{
+                teacher:{
+                    id:'asc'
+                }
+            }
+        },{
+            categories:{
+                id:'asc'
+            }
+        }],
         select:{
             teacherDiscipline:{
                 select:{
