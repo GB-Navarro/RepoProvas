@@ -9,7 +9,7 @@ async function insert(req: Request, res: Response) {
 
     await testServices.insert(data);
 
-    res.status(200).send("Hello World");
+    res.status(200).send("The test has been inserted!");
 }
 
 async function searchByDiscipline(req: Request, res: Response) {
