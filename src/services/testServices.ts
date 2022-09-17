@@ -1,4 +1,4 @@
-import { ITestData, IUnformatedTestObtainedByTermAndDiscipline } from "../interfaces/testInterfaces.js";
+import { ITestData, IUnformatedTestObtainedByTermAndDiscipline, IUnformatedTestObtainedByTeacherName } from "../interfaces/testInterfaces.js";
 import { tests as Tests } from "@prisma/client";
 
 import testsRepository from "../repositories/testsRepository.js";
@@ -32,7 +32,7 @@ async function getManyByTermAndDiscipline() {
 
 async function getManyByTeacherName() {
 
-    const data = await testsRepository.getManyByTeacherName();
+    const data: IUnformatedTestObtainedByTeacherName[] = await testsRepository.getManyByTeacherName();
 
     return data;
 }  
