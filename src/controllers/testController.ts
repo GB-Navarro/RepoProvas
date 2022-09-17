@@ -11,9 +11,18 @@ async function insert(req: Request, res: Response) {
     res.status(200).send("Hello World");
 }
 
+async function searchByDiscipline(req: Request, res: Response) {
+
+    const disciplineId = res.locals.data
+    
+    const data = await testServices.getManyById(disciplineId);
+
+    res.status(200).send(data);
+}
 const testController = {
 
-    insert
+    insert,
+    searchByDiscipline
 }
 
 export default testController;
