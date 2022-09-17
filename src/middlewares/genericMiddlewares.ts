@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { ObjectSchema } from "joi";
 
-import authUtils from "../utils/authUtils";
+import authUtils from "../utils/authUtils.js";
 
 function validateSchema(schema: ObjectSchema) {
     return (req: Request, res: Response, next: NextFunction) => {
