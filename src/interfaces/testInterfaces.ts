@@ -6,21 +6,20 @@ export type ITestData = {
     teacher: string
 }
 
-export type IUnformatedTestsObtainedByTermAndDiscipline = {
-    name: string,
-    pdfUrl: string,
-    categories:{
-        name: string
-    },
-    teacherDiscipline:{
-        teacher:{
+export type IUnformatedTestObtainedByTermAndDiscipline = {
+    teacherDiscipline: {
+        disciplines: {
+            terms: {
+                number: number
+            },
             name: string
         },
-        disciplines:{
-            name: string,
-            terms:{
-                number: number
-            }
+        teacher: {
+            name: string
         }
-    }
+    }, categories: {
+        name: string
+    },
+    name: string,
+    pdfUrl: string
 }
