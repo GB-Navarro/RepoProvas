@@ -23,3 +23,18 @@ export type IUnformatedTestObtainedByTermAndDiscipline = {
     name: string,
     pdfUrl: string
 }
+
+export type IUnformatedTestObtainedByTeacherName = {
+    teacherDiscipline:{
+        teacher:{
+            name: string
+        },
+        disciplines:{
+            name: string
+        }
+    },
+    categories:{
+        name:string
+    },
+    name: string
+}
