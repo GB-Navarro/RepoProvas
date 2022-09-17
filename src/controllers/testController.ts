@@ -13,9 +13,9 @@ async function insert(req: Request, res: Response) {
 
 async function searchByDiscipline(req: Request, res: Response) {
     
-    const { id: disciplineId } = req.params;
+    const { name: disciplineName } = req.params;
     
-    const data = await testServices.getManyById(parseInt(disciplineId));
+    const data = await testServices.getManyById(disciplineName);
 
     res.status(200).send(data);
 }
