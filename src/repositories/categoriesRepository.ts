@@ -1,4 +1,4 @@
-import { client } from "../dbStrategy/postgres.js";
+import { client } from "../dbStrategy/postgres";
  
 async function getIdByName(categoryName: string){
     const result = await client.categories.findFirst({

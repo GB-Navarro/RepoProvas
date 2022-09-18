@@ -1,6 +1,6 @@
 import { tests as Tests } from "@prisma/client";
-import { client } from "../dbStrategy/postgres.js";
-import { IUnformatedTestObtainedByTermAndDiscipline, IUnformatedTestObtainedByTeacherName } from "../interfaces/testInterfaces.js";
+import { client } from "../dbStrategy/postgres";
+import { IUnformatedTestObtainedByTermAndDiscipline, IUnformatedTestObtainedByTeacherName } from "../interfaces/testInterfaces";
 
 async function insert(data: Omit<Tests, "id">) {
 

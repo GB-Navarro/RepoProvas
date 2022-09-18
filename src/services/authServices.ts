@@ -1,8 +1,8 @@
 import { users } from "@prisma/client";
-import { ISignUpData, IUserData } from "../interfaces/authInterfaces.js";
+import { ISignUpData, IUserData } from "../interfaces/authInterfaces";
 
-import authRepository from "../repositories/authRepository.js";
-import authUtils from "../utils/authUtils.js";
+import authRepository from "../repositories/authRepository";
+import authUtils from "../utils/authUtils";
 
 import bcrypt from "bcrypt";
 

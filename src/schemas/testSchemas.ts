@@ -1,4 +1,4 @@
-import { ITestData } from "../interfaces/testInterfaces.js";
+import { ITestData } from "../interfaces/testInterfaces";
 
 import Joi from "joi";
 

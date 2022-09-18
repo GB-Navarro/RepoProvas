@@ -1,4 +1,4 @@
-import { client } from "../dbStrategy/postgres.js";
+import { client } from "../dbStrategy/postgres";
  
 async function getIdByTeacherIdAndDisciplineId(teacherId: number, disciplineId: number){
 

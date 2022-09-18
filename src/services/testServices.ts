@@ -1,13 +1,13 @@
-import { ITestData, IUnformatedTestObtainedByTermAndDiscipline, IUnformatedTestObtainedByTeacherName } from "../interfaces/testInterfaces.js";
+import { ITestData, IUnformatedTestObtainedByTermAndDiscipline, IUnformatedTestObtainedByTeacherName } from "../interfaces/testInterfaces";
 import { tests as Tests } from "@prisma/client";
 
-import testsRepository from "../repositories/testRepository.js";
-import teachersRepository from "../repositories/teachersRepository.js";
-import categoriesRepository from "../repositories/categoriesRepository.js";
-import disciplinesRepository from "../repositories/disciplinesRepository.js";
-import teachersDisciplinesRepository from "../repositories/teachersDisciplinesRepository.js";
+import testsRepository from "../repositories/testRepository";
+import teachersRepository from "../repositories/teachersRepository";
+import categoriesRepository from "../repositories/categoriesRepository";
+import disciplinesRepository from "../repositories/disciplinesRepository";
+import teachersDisciplinesRepository from "../repositories/teachersDisciplinesRepository";
 
-import testUtils from "../utils/testUtils.js";
+import testUtils from "../utils/testUtils";
 
 async function insert(data: ITestData) {
 
