@@ -12,7 +12,7 @@ async function createUser() {
 
     const result = await supertest(app).post("/sign-in").send(body);
 
-    const token = result.body
+    const token = result.text
 
     const data = {
 
