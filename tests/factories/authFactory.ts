@@ -13,15 +13,17 @@ function generateUserData(email: string, password: string){
 
 function generatePassword(){
 
-    const password = faker.internet.password();
+    const length: number = Math.floor(Math.random() * 20) + 10;
+    const password = faker.internet.password(length);
 
     return password;
 }
 
 function createUserWithValidData(){
 
+    const length: number = Math.floor(Math.random() * 20) + 10;
     const email = faker.internet.email()
-    const password = faker.internet.password(10)
+    const password = faker.internet.password(length)
 
     const user = generateUserData(email, password)
 
@@ -30,8 +32,9 @@ function createUserWithValidData(){
 
 function createUserWithInvalidEmail(){
 
+    const length: number = Math.floor(Math.random() * 20) + 10;
     const email = faker.internet.userName();
-    const password = faker.internet.password();
+    const password = faker.internet.password(length);
     
     const user = generateUserData(email, password)
 
@@ -40,8 +43,9 @@ function createUserWithInvalidEmail(){
 
 function createUserWithInvalidConfirmedPassword(){
     
+    const length: number = Math.floor(Math.random() * 20) + 10;
     const email = faker.internet.userName();
-    const password = faker.internet.password();
+    const password = faker.internet.password(length);
     
     const user = generateUserData(email, password)
 
