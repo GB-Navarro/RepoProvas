@@ -6,29 +6,33 @@ import authFactory from "./factories/authFactory";
 
 describe("Teste das rotas de autenticação", () => {
 
+    const agent = supertest(app);
+
     it("Trying to create a user without confirm the password", async () => {
 
-        const body = authFactory.createUser();
+        const body = authFactory.createUserWithValidData();
 
         delete body.confirmedPassword
 
-        const result = await supertest(app).post("/sign-up").send(body);
+        const result = await agent.post("/sign-up").send(body);
 
         const status = result.status
-
-        console.log("Body enviado => ", body);
 
         expect(status).toEqual(422);
     })
 
     /*it("Trying to create a user with wrong data format", () => {
+        
+    })*/
+
+    /*it("Conflict", () => {
 
     })*/
 
-    /*it("Conflict case", () => {
+    /*it("Sucess", () => {
 
     })*/
-
+    
     afterAll(async () => {
         await client.$disconnect();
     })

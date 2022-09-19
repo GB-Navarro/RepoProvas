@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-function createUser(){
+function createUserWithValidData(){
 
     const email = faker.internet.email()
     const password = faker.internet.password(10)
@@ -14,9 +14,24 @@ function createUser(){
     return user;
 }
 
+function createUserWithInvalidEmail(){
+
+    const email = faker.internet.userName();
+    const password = faker.internet.password();
+    
+    const user = {
+        email: email,
+        password: password,
+        confirmedPassword: password
+    }
+
+    return user;
+}
+
 const authFactory = {
 
-    createUser
+    createUserWithValidData,
+    createUserWithInvalidEmail
 }
 
 export default authFactory;
