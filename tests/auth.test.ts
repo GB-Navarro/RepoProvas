@@ -8,7 +8,7 @@ describe("/sign-up", () => {
 
     const agent = supertest(app);
 
-    it("Trying to create a user without confirm the password", async () => {
+    it("Trying to create a user without the confirmedPassword attribute", async () => {
 
         const body = authFactory.createUserWithValidData();
 
@@ -43,9 +43,18 @@ describe("/sign-up", () => {
         expect(status).toEqual(422);   
     })
 
-    /*it("Conflict", () => {
+    it("Conflict", async () => {
 
-    })*/
+        const body = authFactory.createUserWithValidData();
+
+        await agent.post("/sign-up").send(body);
+
+        const result = await agent.post("/sign-up").send(body);
+
+        const status = result.status;
+
+        expect(status).toEqual(409);  
+    })
 
     /*it("Sucess", () => {
 
