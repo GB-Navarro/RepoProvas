@@ -2,7 +2,7 @@ import authFactory from "../factories/authFactory";
 import supertest from "supertest";
 import app from "../../src/app";
 
-async function createUser() {
+async function getToken() {
 
     const body = authFactory.createUserWithValidData();
 
@@ -14,18 +14,12 @@ async function createUser() {
 
     const token = result.text
 
-    const data = {
-
-        user: body,
-        token: token
-    }
-
-    return data
+    return token
 }
 
 const utils = {
 
-    createUser
+    getToken
 }
 
 export default utils;
