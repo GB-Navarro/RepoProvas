@@ -77,3 +77,39 @@ describe("/sign-up", () => {
         await client.$disconnect();
     })
 })
+
+describe("/sign-in", () => {
+
+    const agent = supertest(app);
+
+    it("Trying to login with a non-existent email", async () => {
+
+        const body = authFactory.createUserWithValidData();
+
+        delete body.confirmedPassword
+
+        const result = await agent.post("/sign-in").send(body);
+
+        const status = result.status;
+
+        expect(status).toEqual(401);
+    })
+
+    /*it("Trying to login with incorrect password", async () => {
+        //email correto e senha errada
+    })*/
+
+    /*it("Sucess", async () => {
+
+    })*/
+
+    beforeEach(async () => {
+
+        await client.$executeRaw`TRUNCATE TABLE users;`
+    })
+
+    afterAll(async () => {
+
+        await client.$disconnect();
+    })
+})
