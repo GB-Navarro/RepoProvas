@@ -111,9 +111,19 @@ describe("/sign-in", () => {
         expect(status).toEqual(401);
     })
 
-    /*it("Sucess", async () => {
+    it("Sucess", async () => {
 
-    })*/
+        const body = authFactory.createUserWithValidData();
+
+        await agent.post("/sign-up").send(body);
+
+        delete body.confirmedPassword;
+        
+        const result = await agent.post("/sign-in").send(body);
+        const status = result.status;
+
+        expect(status).toEqual(200);
+    })
 
     beforeEach(async () => {
 
