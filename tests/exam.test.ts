@@ -3,7 +3,6 @@ import { client } from "../src/dbStrategy/postgres";
 import app from "../src/app";
 import supertest from "supertest";
 import utils from "./testUtils/utils";
-import authFactory from "./factories/authFactory";
 import examFactory from "./factories/examFactory";
 
 describe("/tests/insert", () => {
@@ -19,9 +18,18 @@ describe("/tests/insert", () => {
 
         expect(status).toEqual(401);
     })
-    /*it("Trying to create a exam without the name attribute", async () => {
+    it("Trying to create a exam without the name attribute", async () => {
 
-    })*/
+        const body = examFactory.createExamWithValidData();
+        const token = await utils.getToken();
+
+        delete body.name;
+
+        const result = await agent.post("/tests/insert").set('Authorization', token).send(body);
+        const status = result.status;
+
+        expect(status).toEqual(422);
+    })
     /*it("Trying to create a exam without the pdfUrl attribute", async () => {
 
     })*/
