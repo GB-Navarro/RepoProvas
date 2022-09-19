@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 
 export default async function errorHandler(error: any, req: Request, res: Response, next: NextFunction){
 
-    if(error.code === "error_thisEmailIsNotRegistered" || error.code === "error_wrongPassword"){
+    if(error.code === "error_thisEmailIsNotRegistered" || error.code === "error_wrongPassword" || error.code === "error_notReceivedAToken"){
         return res.status(401).send(error.message);
     }
     if(error.code === "error_emailAlreadyInUse"){
