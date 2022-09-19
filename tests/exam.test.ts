@@ -127,3 +127,34 @@ describe("/tests/searchByDiscipline", () => {
         await client.$disconnect();
     })
 })
+
+describe("/tests/searchByTeacher", () => {
+
+    const agent = supertest(app);
+
+    it("Trying to get the data without the authorization token", async () => {
+
+        const result = await agent.get("/tests/searchByTeacher");
+
+        const status = result.status;
+
+        expect(status).toEqual(401);
+    })
+
+    it("Sucess", async () => {
+
+        const token = await utils.getToken();
+        const result = await agent.get("/tests/searchByTeacher").set('Authorization', token);
+
+        const status = result.status;
+
+        expect(status).toEqual(200);
+        expect(result.body).toBeInstanceOf(Array);
+    })
+
+
+    afterAll(async () => {
+
+        await client.$disconnect();
+    })
+})
