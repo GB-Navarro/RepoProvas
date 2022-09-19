@@ -12,7 +12,7 @@ async function getToken() {
 
     const result = await supertest(app).post("/sign-in").send(body);
 
-    const token = result.text
+    const token = "Bearer " + result.text
 
     return token
 }
