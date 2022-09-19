@@ -78,9 +78,16 @@ describe("/tests/insert", () => {
 
         expect(status).toEqual(422);
     })
-    /*it("Sucess", async () => {
+    it("Sucess", async () => {
 
-    })*/
+        const body = examFactory.createExamWithValidData();
+        const token = await utils.getToken();
+
+        const result = await agent.post("/tests/insert").set('Authorization', token).send(body);
+        const status = result.status;
+
+        expect(status).toEqual(201);
+    })
 
     beforeEach(async () => {
 
