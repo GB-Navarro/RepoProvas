@@ -43,9 +43,27 @@ function createExamWithValidData() {
     return examData;
 }
 
+async function createExamWithInvalidTeacherDiscipline(){
+
+    const examData = createExamWithValidData();
+
+    const disciplines = ["HTML e CSS","JavaScript","React", "Humildade","Planejamento","Autoconfiança"];
+
+    if(examData.teacher === 'Diego Pinho'){
+        const disciplineNumber: number = Math.floor(Math.random() * 3) + 3;
+        examData.discipline = disciplines[disciplineNumber];
+    }else{
+        const disciplineNumber: number = Math.floor(Math.random() * 3);
+        examData.discipline = disciplines[disciplineNumber];
+    }
+    
+    return examData;
+}
+
 const examFactory = {
 
-    createExamWithValidData
+    createExamWithValidData,
+    createExamWithInvalidTeacherDiscipline
 }
 
 export default examFactory;
