@@ -1,4 +1,4 @@
-import { ISignUpData, IUserData } from "../interfaces/authInterfaces.js";
+import { ISignUpData, IUserData } from "../interfaces/authInterfaces";
 
 import Joi from "joi";
 

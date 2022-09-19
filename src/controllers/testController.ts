@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { ITestData, IUnformatedTestObtainedByTeacherName, IUnformatedTestObtainedByTermAndDiscipline } from "../interfaces/testInterfaces.js";
+import { ITestData, IUnformatedTestObtainedByTeacherName, IUnformatedTestObtainedByTermAndDiscipline } from "../interfaces/testInterfaces";
 
-import testServices from "../services/testServices.js";
+import testServices from "../services/testServices";
 
 async function insert(req: Request, res: Response) {
 
@@ -9,7 +9,7 @@ async function insert(req: Request, res: Response) {
 
     await testServices.insert(data);
 
-    res.status(200).send("The test has been inserted!");
+    res.status(201).send("The test has been inserted!");
 }
 
 async function searchByDiscipline(req: Request, res: Response) {

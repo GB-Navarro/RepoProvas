@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-import testController from "../controllers/testController.js";
-import genericMiddlewares from "../middlewares/genericMiddlewares.js";
-import testSchemas from "../schemas/testSchemas.js";
+import testController from "../controllers/testController";
+import genericMiddlewares from "../middlewares/genericMiddlewares";
+import testSchemas from "../schemas/testSchemas";
 
 const testRouter = Router();
 

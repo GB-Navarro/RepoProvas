@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { ISignUpData, IUserData } from "../interfaces/authInterfaces.js";
+import { ISignUpData, IUserData } from "../interfaces/authInterfaces";
 
-import authServices from "../services/authServices.js";
+import authServices from "../services/authServices";
 
 async function signUp(req: Request, res: Response) {
 
