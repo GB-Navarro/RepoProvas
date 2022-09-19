@@ -42,9 +42,18 @@ describe("/tests/insert", () => {
 
         expect(status).toEqual(422);
     })
-    /*it("Trying to create a exam without the category attribute", async () => {
+    it("Trying to create a exam without the category attribute", async () => {
 
-    })*/
+        const body = examFactory.createExamWithValidData();
+        const token = await utils.getToken();
+
+        delete body.category;
+
+        const result = await agent.post("/tests/insert").set('Authorization', token).send(body);
+        const status = result.status;
+
+        expect(status).toEqual(422);
+    })
     /*it("Trying to create a exam without the discipline attribute", async () => {
 
     })*/
