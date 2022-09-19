@@ -26,6 +26,7 @@ describe("/tests/insert", () => {
         delete body.name;
 
         const result = await agent.post("/tests/insert").set('Authorization', token).send(body);
+
         const status = result.status;
 
         expect(status).toEqual(422);
@@ -81,18 +82,45 @@ describe("/tests/insert", () => {
     it("Sucess", async () => {
 
         const body = examFactory.createExamWithValidData();
-        const token = await utils.getToken();
 
+        const token = await utils.getToken();
         const result = await agent.post("/tests/insert").set('Authorization', token).send(body);
+
         const status = result.status;
 
         expect(status).toEqual(201);
     })
 
-    beforeEach(async () => {
+    afterAll(async () => {
 
-        await client.$executeRaw`TRUNCATE TABLE users;`
+        await client.$disconnect();
     })
+})
+
+describe("/tests/searchByDiscipline", () => {
+
+    const agent = supertest(app);
+
+    it("Trying to get the data without the authorization token", async () => {
+
+        const result = await agent.get("/tests/searchByDiscipline");
+
+        const status = result.status;
+
+        expect(status).toEqual(401);
+    })
+
+    it("Sucess", async () => {
+
+        const token = await utils.getToken();
+        const result = await agent.get("/tests/searchByDiscipline").set('Authorization', token);
+
+        const status = result.status;
+
+        expect(status).toEqual(200);
+        expect(result.body).toBeInstanceOf(Array);
+    })
+
 
     afterAll(async () => {
 
