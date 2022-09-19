@@ -86,7 +86,7 @@ describe("/sign-in", () => {
 
         const body = authFactory.createUserWithValidData();
 
-        delete body.confirmedPassword
+        delete body.confirmedPassword;
 
         const result = await agent.post("/sign-in").send(body);
 
@@ -95,9 +95,21 @@ describe("/sign-in", () => {
         expect(status).toEqual(401);
     })
 
-    /*it("Trying to login with incorrect password", async () => {
-        //email correto e senha errada
-    })*/
+    it("Trying to login with incorrect password", async () => {
+
+        const body = authFactory.createUserWithValidData();
+
+        await agent.post("/sign-up").send(body);
+
+        delete body.confirmedPassword;
+
+        body.password = authFactory.generatePassword();
+        
+        const result = await agent.post("/sign-in").send(body);
+        const status = result.status;
+
+        expect(status).toEqual(401);
+    })
 
     /*it("Sucess", async () => {
 
