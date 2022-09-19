@@ -22,7 +22,7 @@ describe("/sign-up", () => {
     })
 
     it("Trying to create a user with wrong confirmed password", async () => {
-        
+
         const body = authFactory.createUserWithInvalidConfirmedPassword();
 
         const result = await agent.post("/sign-up").send(body);
@@ -40,7 +40,7 @@ describe("/sign-up", () => {
 
         const status = result.status;
 
-        expect(status).toEqual(422);   
+        expect(status).toEqual(422);
     })
 
     it("Conflict", async () => {
@@ -53,14 +53,27 @@ describe("/sign-up", () => {
 
         const status = result.status;
 
-        expect(status).toEqual(409);  
+        expect(status).toEqual(409);
     })
 
-    /*it("Sucess", () => {
+    it("Sucess", async () => {
 
-    })*/
-    
+        const body = authFactory.createUserWithValidData();
+
+        const result = await agent.post("/sign-up").send(body);
+
+        const status = result.status;
+
+        expect(status).toEqual(201);
+    })
+
+    beforeEach(async () => {
+
+        await client.$executeRaw`TRUNCATE TABLE users;`
+    })
+
     afterAll(async () => {
+
         await client.$disconnect();
     })
 })
