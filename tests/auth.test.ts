@@ -12,16 +12,27 @@ describe("Teste das rotas de autenticação", () => {
 
         const body = authFactory.createUserWithValidData();
 
-        delete body.confirmedPassword
+        delete body.confirmedPassword;
 
         const result = await agent.post("/sign-up").send(body);
 
-        const status = result.status
+        const status = result.status;
 
         expect(status).toEqual(422);
     })
 
-    /*it("Trying to create a user with wrong data format", () => {
+    it("Trying to create a user with wrong confirmed password", async () => {
+        
+        const body = authFactory.createUserWithInvalidConfirmedPassword();
+
+        const result = await agent.post("/sign-up").send(body);
+
+        const status = result.status;
+
+        expect(status).toEqual(422);
+    })
+
+    /*it("Trying to create a user with wrong email format", () => {
         
     })*/
 
