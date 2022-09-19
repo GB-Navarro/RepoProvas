@@ -4,7 +4,7 @@ import app from "../src/app";
 import supertest from "supertest";
 import authFactory from "./factories/authFactory";
 
-describe("Teste das rotas de autenticação", () => {
+describe("/sign-up", () => {
 
     const agent = supertest(app);
 
@@ -32,9 +32,16 @@ describe("Teste das rotas de autenticação", () => {
         expect(status).toEqual(422);
     })
 
-    /*it("Trying to create a user with wrong email format", () => {
-        
-    })*/
+    it("Trying to create a user with wrong email format", async () => {
+
+        const body = authFactory.createUserWithInvalidEmail();
+
+        const result = await agent.post("/sign-up").send(body);
+
+        const status = result.status;
+
+        expect(status).toEqual(422);   
+    })
 
     /*it("Conflict", () => {
 
