@@ -11,6 +11,13 @@ function generateUserData(email: string, password: string){
     return user
 }
 
+function generatePassword(){
+
+    const password = faker.internet.password();
+
+    return password;
+}
+
 function createUserWithValidData(){
 
     const email = faker.internet.email()
@@ -41,11 +48,11 @@ function createUserWithInvalidConfirmedPassword(){
     user.confirmedPassword = faker.internet.password();
 
     return user;
-
 }
 
 const authFactory = {
 
+    generatePassword,
     createUserWithValidData,
     createUserWithInvalidEmail,
     createUserWithInvalidConfirmedPassword
