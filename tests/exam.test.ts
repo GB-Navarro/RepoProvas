@@ -8,7 +8,6 @@ describe("/tests/insert", () => {
 
     const agent = supertest(app);
 
-    
     /*it("Trying to create a exam without the authorization token", async () => {
 
     })*/
